@@ -6,12 +6,7 @@
   "scripts": {
     "dev": "vue-cli-service serve --mode development --host 127.0.0.1",
     "build:prod": "vue-cli-service build --mode production",
-    "build:stage": "vue-cli-service build --mode staging",
-    "preview": "node build/index.js --preview",
-    "svgo": "svgo -f src/icons/svg --config=src/icons/svgo.yml",
-    "lint": "eslint --ext .js,.vue src",
-    "test:unit": "jest --clearCache && vue-cli-service test:unit",
-    "test:ci": "npm run lint && npm run test:unit"
+    "build:stage": "vue-cli-service build --mode staging"
   },
   "dependencies": {
     "@riophae/vue-treeselect": "0.4.0",
