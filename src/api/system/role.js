@@ -59,7 +59,7 @@ export function deleteRole(data) {
  */
 export function getMenuTrees() {
     return request({
-        url: '/system/menu/getMenuTrees',
+        url: '/system/menu/menuTrees',
         method: 'post'
     });
 }

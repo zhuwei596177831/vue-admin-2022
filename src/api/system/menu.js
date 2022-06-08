@@ -2,28 +2,6 @@ import request from '@/utils/request'
 import {urlencoded_content_type} from "@/utils/constants";
 
 /**
- * 菜单树
- * @returns {Promise<unknown>}
- */
-export function menuTrees() {
-    return request({
-        url: '/system/menu/menuTrees',
-        method: 'post'
-    });
-}
-
-/**
- * 用户权限菜单
- * @returns {Promise<unknown>}
- */
-export function userMenus() {
-    return request({
-        url: '/system/menu/userMenus',
-        method: 'post'
-    });
-}
-
-/**
  * 菜单列表
  * @param data
  * @returns {Promise<unknown>}
@@ -83,19 +61,6 @@ export function menuTypes() {
     return request({
         url: '/system/menu/menuTypes',
         method: 'post'
-    });
-}
-
-/**
- * 根据菜单类型查询 上级菜单列表下拉数据
- * @param data
- */
-export function parentMenus(data) {
-    return request({
-        url: '/system/menu/parentMenus',
-        method: 'post',
-        data: data,
-        headers: {'content-type': urlencoded_content_type}
     });
 }
 
