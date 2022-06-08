@@ -1,8 +1,8 @@
 {
-  "name": "vue-admin-template",
+  "name": "vue-admin-cli-2022",
   "version": "4.4.0",
-  "description": "A vue admin template with Element UI & axios & iconfont & permission control & lint",
-  "author": "Pan <panfree23@gmail.com>",
+  "description": "vue-admin-cli-2022",
+  "author": "vue-admin-cli-2022",
   "scripts": {
     "dev": "vue-cli-service serve --mode development --host 127.0.0.1",
     "build:prod": "vue-cli-service build --mode production",
