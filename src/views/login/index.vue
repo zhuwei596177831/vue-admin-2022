@@ -21,7 +21,10 @@
           <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'"/>
         </span>
       </el-form-item>
-      <el-button type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">登录</el-button>
+      <el-button type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin" :disabled="isDisabled">
+        <span v-if="!loading">登 录</span>
+        <span v-else>登 录 中...</span>
+      </el-button>
     </el-form>
   </div>
 </template>
@@ -41,6 +44,8 @@
         }
       };
       return {
+        loading: false,
+        isDisabled: false,
         loginForm: {
           username: null,
           password: null
@@ -61,14 +66,6 @@
         // redirect: undefined
       }
     },
-    watch: {
-      // $route: {
-      //   handler: function (route) {
-      //     this.redirect = route.query && route.query.redirect
-      //   },
-      //   immediate: true
-      // }
-    },
     methods: {
       showPwd() {
         if (this.passwordType === 'password') {
@@ -83,12 +80,19 @@
       handleLogin() {
         this.$refs.loginForm.validate(valid => {
           if (valid) {
+            this.loading = true;
+            this.isDisabled = true;
             this.$store.dispatch('user/login', {
               username: this.loginForm.username,
               password: encrypt(this.loginForm.password)
             }).then(() => {
+              this.loading = false;
+              this.isDisabled = false;
               // this.$router.push({path: this.redirect || '/'});
               this.$router.push('/');
+            }).catch(() => {
+              this.loading = false;
+              this.isDisabled = false;
             });
           } else {
             return false;

@@ -1,15 +1,4 @@
 <template>
-  <!--  <div :class="classObj" class="app-wrapper">-->
-  <!--    <div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside" />-->
-  <!--    <sidebar class="sidebar-container" />-->
-  <!--    <div class="main-container">-->
-  <!--      <div :class="{'fixed-header':fixedHeader}">-->
-  <!--        <navbar />-->
-  <!--      </div>-->
-  <!--      <app-main />-->
-  <!--    </div>-->
-  <!--  </div>-->
-
   <div :class="classObj" class="app-wrapper" :style="{'--current-color': theme}">
     <div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside"/>
     <sidebar v-if="!sidebar.hide" class="sidebar-container"/>
@@ -49,7 +38,10 @@
       ...mapState({
         theme: state => state.settings.theme,
         sideTheme: state => state.settings.sideTheme,
-        needTagsView: state => state.settings.tagsView
+        sidebar: state => state.app.sidebar,
+        device: state => state.app.device,
+        needTagsView: state => state.settings.tagsView,
+        fixedHeader: state => state.settings.fixedHeader
       }),
       sidebar() {
         return this.$store.state.app.sidebar
@@ -81,8 +73,8 @@
 </script>
 
 <style lang="scss" scoped>
-  @import "~@/styles/mixin.scss";
-  @import "~@/styles/variables.scss";
+  @import "~@/assets/styles/mixin.scss";
+  @import "~@/assets/styles/variables.scss";
 
   .app-wrapper {
     @include clearfix;
@@ -111,12 +103,16 @@
     top: 0;
     right: 0;
     z-index: 9;
-    width: calc(100% - #{$sideBarWidth});
+    width: calc(100% - #{$base-sidebar-width});
     transition: width 0.28s;
   }
 
   .hideSidebar .fixed-header {
-    width: calc(100% - 54px)
+    width: calc(100% - 54px);
+  }
+
+  .sidebarHide .fixed-header {
+    width: 100%;
   }
 
   .mobile .fixed-header {
