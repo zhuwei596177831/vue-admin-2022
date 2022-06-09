@@ -3,6 +3,7 @@ import {logout} from '@/api/logout'
 import {login} from '@/api/login'
 import {resetRouter} from '@/router'
 import {getToken, removeToken, setToken} from '@/utils/cookie'
+import store from "@/store";
 
 const getDefaultState = () => {
   return {
@@ -91,6 +92,7 @@ const actions = {
         removeToken(); // must remove  token  first
         resetRouter();
         commit('RESET_STATE');
+        store.dispatch('tagsView/delAllViews');
         resolve()
       }).catch(error => {
         reject(error)
