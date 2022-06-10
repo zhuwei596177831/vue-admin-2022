@@ -43,7 +43,7 @@
           <dict-tag :options="dict.type.sys_common_status" :value="scope.row.status"/>
         </template>
       </el-table-column>
-      <el-table-column label="提示信息" align="center" prop="msg"/>
+      <el-table-column label="提示信息" align="center" prop="msg" width="120" :show-overflow-tooltip="true"/>
       <el-table-column label="登录时间" align="center" prop="accessTime" width="180"/>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
