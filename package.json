@@ -5,8 +5,8 @@
   "author": "vue-admin-cli-2022",
   "scripts": {
     "dev": "vue-cli-service serve --mode development --host 127.0.0.1",
-    "build:prod": "vue-cli-service build --mode production",
-    "build:stage": "vue-cli-service build --mode staging"
+    "prod": "vue-cli-service build --mode production",
+    "stage": "vue-cli-service build --mode staging"
   },
   "dependencies": {
     "@riophae/vue-treeselect": "0.4.0",
