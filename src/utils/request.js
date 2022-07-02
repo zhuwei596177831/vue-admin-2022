@@ -1,6 +1,7 @@
 import axios from 'axios'
+import {resetRouter} from '@/router'
 import {END, START} from './loading'
-import {getToken} from '@/utils/cookie'
+import {getToken, removeToken} from '@/utils/cookie'
 import qs from 'qs';
 import {json_content_type, unauthorized_code, urlencoded_content_type} from "@/utils/constants";
 import router from "@/router";
@@ -50,6 +51,9 @@ instance.interceptors.response.use(
     if (!success) {
       //session失效
       if (code === unauthorized_code) {
+        removeToken();
+        resetRouter();
+        store.commit('user/RESET_STATE');
         router.replace('/login');
       }
       err(msg);

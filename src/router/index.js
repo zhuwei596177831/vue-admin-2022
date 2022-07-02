@@ -216,9 +216,15 @@ export const asyncRoutes = [
 ];
 
 // 防止连续点击多次路由报错
+// push
 let routerPush = VueRouter.prototype.push;
 VueRouter.prototype.push = function push(location) {
   return routerPush.call(this, location).catch(err => err)
+};
+// replace
+const originalReplace = VueRouter.prototype.replace;
+VueRouter.prototype.replace = function replace(location) {
+  return originalReplace.call(this, location).catch(err => err)
 };
 
 const createRouter = () => new VueRouter({
