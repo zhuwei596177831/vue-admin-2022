@@ -25,7 +25,7 @@ instance.defaults.headers['Content-Type'] = json_content_type;
 //请求拦截
 instance.interceptors.request.use(
   config => {
-    // START();
+    START();
     //添加自定义的Token
     if (store.getters.token) {
       // let each request carry token
@@ -46,7 +46,7 @@ instance.interceptors.request.use(
 //响应拦截
 instance.interceptors.response.use(
   response => {
-    // END();
+    END();
     const {data: {code, msg, success}} = response;
     if (!success) {
       //session失效
@@ -62,7 +62,7 @@ instance.interceptors.response.use(
     return response.data;
   },
   error => {
-    // END();
+    END();
     err(error);
     // router.replace('/login');
     return Promise.reject(error);

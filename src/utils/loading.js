@@ -14,9 +14,10 @@ let count = 0; // 数据请求次数
 const START = () => {
   if (count === 0) {
     loading = Loading.service({
-      lock: true,
-      text: '加载中...',
-      spinner: 'el-icon-loading'
+      lock: true
+      // , text: '加载中...'
+      // , spinner: 'el-icon-loading'
+      , background: 'rgba(0, 0, 0, 0.1)'
     });
   }
   ++count;

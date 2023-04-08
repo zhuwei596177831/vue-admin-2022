@@ -1,0 +1,17 @@
+.el-loading-spinner {
+  background-image: url('../gif/loading.gif');/*设置自己想要的图片或gif*/
+  background-repeat: no-repeat;
+  background-size: 60px 60px;
+  height: 100px;
+  width: 100%;
+  background-position: center;
+  top: 45%;
+}
+
+.el-loading-spinner .circular {/*隐藏 默认的 loading 动画*/
+  display: none;
+}
+
+.el-loading-spinner .el-loading-text {
+  /*作为扩充，这个是用来设置文字的位置的，如有需要，自行设置……*/
+}
